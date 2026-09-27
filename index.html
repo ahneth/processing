@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Weaver | Interactive Idea Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for warm, inviting typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <h1>Thought Weaver</h1>
+                <p>Explore ideas branch by branch</p>
+            </div>
+            <div class="settings-area">
+                <button id="apiKeyBtn" class="secondary-btn">🔑 Groq API Key</button>
+            </div>
+        </header>
+
+        <!-- API Key Modal / Banner -->
+        <div id="apiKeyModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Enter your Groq API Key</h3>
+                <p>Your key is stored securely in your browser's local storage and used only for API calls.</p>
+                <input type="password" id="apiKeyInput" placeholder="gsk_..." />
+                <div class="modal-actions">
+                    <button id="saveKeyBtn" class="primary-btn">Save Key</button>
+                    <button id="closeKeyBtn" class="text-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace (Top-Down Flow) -->
+        <main class="workspace">
+            <div id="historyContainer" class="history-container">
+                <!-- Dynamic steps will be injected here -->
+            </div>
+
+            <!-- Active Input / Options Panel (Pinned or at bottom of flow) -->
+            <div id="activePanel" class="active-panel hidden">
+                <div id="loadingIndicator" class="loading-indicator hidden">
+                    <div class="spinner"></div>
+                    <span>Weaving next thoughts...</span>
+                </div>
+
+                <div id="optionsSection" class="options-section">
+                    <h3>Choose a path to continue:</h3>
+                    <div id="optionsList" class="options-list">
+                        <!-- 5 option buttons injected here -->
+                    </div>
+
+                    <div class="divider"><span>or write your own</span></div>
+
+                    <div class="custom-input-group">
+                        <textarea id="customInputText" placeholder="Write your own continuation here..."></textarea>
+                        <div class="panel-actions">
+                            <button id="submitCustomBtn" class="primary-btn">Continue with Custom Input</button>
+                            <button id="endSessionBtn" class="danger-btn">🏁 End & Summarize</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seed Input View (Shown initially) -->
+            <div id="seedSection" class="seed-section">
+                <h2>Where should we begin?</h2>
+                <p>Enter a starting sentence, paragraph, or core premise to spark the journey.</p>
+                <textarea id="seedText" placeholder="e.g., The discovery of an abandoned signal in deep space changed human history forever..."></textarea>
+                <button id="startBtn" class="primary-btn large-btn">Start Weaving Journey</button>
+            </div>
+
+            <!-- Final Summary & Recommendations View -->
+            <div id="summarySection" class="summary-section hidden">
+                <div class="summary-card">
+                    <h2>✨ Journey Summary & Insights</h2>
+                    <div id="summaryContent" class="summary-content"></div>
+                    <div class="summary-actions">
+                        <button id="restartBtn" class="primary-btn">🔄 Start New Journey</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
